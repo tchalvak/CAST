@@ -7,12 +7,12 @@ to its terms and conditions, defined in LICENSE.txt */
 /* (BTW: many of these functions aren't necessary -- they have built-in 
 analogues in PHP. It's a project goal to remove them). */
 
-function var2str($var)
+function var2str($var, $pre=true)
 {
     ob_start();
-	echo("<pre>");
+	if($pre){ echo("<pre>"); }
 	print_r($var);
-	echo("</pre>");
+	if($pre){ echo("</pre>"); }
     $str = ob_get_contents();
     ob_end_clean();
 
@@ -21,7 +21,7 @@ function var2str($var)
 
 function precho($str)
 {
-	echo "<pre>".var2str($str)."</pre>";
+	echo "<pre>".var2str($str, $pre=false)."</pre>";
 }
 
 function file2aa($filename)
